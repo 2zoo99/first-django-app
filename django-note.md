@@ -128,12 +128,20 @@ password: qwer0987
 배포를 위해서는 호스팅 서비스를 제공하는 업체를 보통 활용한다.  
 그래서 웹 사이트를 만들때에는 개인 로컬 PC와 아래 두가지 기능을 할 수 있는 업체를 선정해두어야 한다.  
 - [pythonanywhere](https://www.pythonanywhere.com/) : 방문자가 그리 많지 않은 소규모 애플리케이션을 위한 무료 서비스를 제공하는 호스팅 서비스다.  
+```
+username : 2zoo99
+email : 20234120@gm.hannam.ac.kr
+password: kang0745.
+```
 - [github code hosting service](https://github.com/) : 거의 모든 개발자들은 깃허브 계정을 가지고 있고, 이곳에 애플리케이션의 복사본을 저장해두면 된다. 
 
 ### git 간단 설명
 git은 기본적으로 로컬 PC 즉, 개발자가 개발하는 PC에서 코드 버전을 관리할 수 있도록 기능을 제공한다.  
 그러나 메모리 한계와 여러 프로그램 개발 등으로 개인 PC에서 뿐만 아니라 원격으로 여러 개발자들이 함께 공동 개발을 할 경우에는 코드를 계속 업데이트하고 공유해야 하는데 이를 github 같은 호스팅 업체에서 지원하고 있다.  
 git 과 github 둘다 코드 저장소 즉 리포지토리라는 곳에 특정 애플리케이션을 구성하는 파일들을 한데 모아 변환를 추적하고 관리할 수 있게 한다.  
+git 은 프로젝트 디렉토리에 있는 모든 파일과 폴더들의 변경점을 추적하는데, 굳이 추적하지 않아도 되는 파일들은 무시하도록 할 수 있다. (ignore)  
+.gitignore 파일을 만들어서 무시하고자 하는 파일들을 추가하면 된다.  
+
 로컬 PC에서 새로운 리포지토리를 생성하려면 초기화 명령어를 실행한다.  
 중요한것은, 프로젝트 디렉토리에서 리포지토리를 생성해야 한다.  
 ```
@@ -142,4 +150,19 @@ $ git config --global user.name "git_user_name"
 $ git config --global user.email "git_user_email"
 
 $ git config list  //name, email 설정 잘 되었는지 확인 
+```
+
+`$ git status` 명령어는 미추적, 수정된, 스테이지된 파일, 브랜치 상태 등의 정보를 확인할 수 있다.  
+```
+$ git add --all
+$ git commit -m "message"
+```
+위와 같은 명령어를 하고나면 지금까지 수정된 파일들의 변화점이 로컬 PC에 커밋 즉, 저장관리되는 것이다.  
+이것을 github 의 원격 리포지토리에 저장하려면 github 계정에 새로운 원격 repo를 생성한 후 내 로컬PC의 git 리포지토리와 연결하면 된다.  
+보통 원격 리포지토리 주소는 너무 길어서 origin이라는 간단한 별칭으로 설정해 사용한다.  
+원격 리포지토리가 연결되면 브랜치라는 기능으로 변경점들을 관리하는데 기본 브랜치 이름은 master 또는 main으로 정해진다.  
+그리고 나서 내가 로컬PC에 커밋했던 변경점들을 push 명령어로 원격 리포지토리로 전송한다.  
+```
+$ git remote add origin https://github.com/<github-username>/<github-repository>.git
+$ git push -u origin master
 ```
